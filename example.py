@@ -29,7 +29,6 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import json
 from cloudacademy import CloudAcademy
 
 aws = "5242fc36af1762274b68951f"
@@ -40,7 +39,7 @@ ca = CloudAcademy(access,secret)
 
 exit=False
 while not exit:
-    quiz = ca.quiz_random.get(provider_id=aws)
+    quiz = ca.quiz.get(provider_id=aws)
     print quiz['description']
     for answer in quiz['answers']:
         print " [%(id)s] %(description)s" % answer
@@ -55,12 +54,12 @@ while not exit:
             break
         except:
             user_answer = None
-
+            
         if user_answer not in [a['id'] for a in quiz['answers']]:
             user_answer = None
             
     if not exit:
-        result = ca.quiz_simple.post(quiz_id=quiz['_id'],action="answer",answer_id=user_answer)
+        result = ca.quiz_answer.post(quiz_id=quiz['_id'],action="answer",answer_id=user_answer)
         print result['msg']
         print
 

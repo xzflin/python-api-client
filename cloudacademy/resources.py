@@ -29,7 +29,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import json, requests
+import json, requests, urllib
 from .exceptions import ResourceException
 
 class BaseResource(object):
@@ -59,6 +59,8 @@ class BaseResource(object):
             
     def _make_request(self,method,**kwargs):
         url = self._make_url(**kwargs)
+        if method == "get" and kwargs:
+            url = "{}?{}".format(url,urllib.urlencode(kwargs))
         params = {"url":url,"auth":self.connection.auth}
         if method == "post":
             params.update({"data":json.dumps(kwargs),"headers":{'Content-Type': 'application/json'}})
@@ -105,10 +107,18 @@ class QuizAnswer(BaseResource):
     path = "/quiz/simple/%(quiz_id)s/"
     methods = ["get","post"]    
     
-class CourseListResource(BaseResource):
+class CourseList(BaseResource):
     path = "/courses/"
     methods = ["get","post"]    
     
-class CourseResource(BaseResource):
+class Course(BaseResource):
     path = "/courses/%(course_id)s/"
+    methods = ["get","post"]   
+    
+class TagList(BaseResource):
+    path = "/tags/"
     methods = ["get","post"]    
+    
+class Tag(BaseResource):
+    path = "/tags/%(tag_id)s/"
+    methods = ["get","post"]        

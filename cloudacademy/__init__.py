@@ -29,22 +29,26 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from .resources import User, UserList, LeaderBoard, UserCloudRank,RandomQuiz,SimpleQuiz
+from . import resources
 from .exceptions import ResourceException
 
 class CloudAcademy(object):
     """docstring for CloudAcademy"""
     
-    #_baseurl = "https://cloudacademy.com/api/v%d"
-    _baseurl = "http://local.cloudacademy.com:5000/api/v%d"
+    _baseurl = "https://cloudacademy.com/api/v%d"
     
     resources = {
-        'leaderboard':      LeaderBoard,
-        'user':             User,
-        'user_cloudrank':   UserCloudRank,
-        'user_list':        UserList,
-        'quiz_random':      RandomQuiz,
-        'quiz_simple':      SimpleQuiz,
+        'leaderboard':      resources.LeaderBoard,
+        'users':            resources.UserList,
+        'user':             resources.User,
+        'user_cloudrank':   resources.UserCloudRank,
+        'quiz':             resources.Quiz,
+        'quiz_by_tag':      resources.QuizByTag,
+        'quiz_answer':      resources.QuizAnswer,
+        'courses':          resources.CourseList,
+        'course':           resources.Course,
+        'tags':             resources.TagList,
+        'tag':              resources.Tag,
     }
     
     def __init__(self, access, secret,version=1):
