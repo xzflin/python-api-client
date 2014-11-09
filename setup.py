@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'cloudacademy',
   packages = ['cloudacademy'],
-  version = '0.1',
+  version = '0.2',
   description = 'Python client for CloudAcademy.com API',
   author = 'Giacomo Marinangeli',
   author_email = 'giacomo@cloudacademy.com',
