@@ -6,8 +6,8 @@ setup(
   description = 'Python client for CloudAcademy.com API',
   author = 'Giacomo Marinangeli',
   author_email = 'giacomo@cloudacademy.com',
-  url = 'https://bitbucket.org/cloudacademy/api/',
-  download_url = 'https://bitbucket.org/cloudacademy/api/',
+  url = 'https://github.com/cloudacademy/python-api-client',
+  download_url = 'https://github.com/cloudacademy/python-api-client/archive/0.2.tar.gz',
   keywords = ['cloudacademy', 'cloud', 'academy', 'api','rest'],
   classifiers = [],
   install_requires=[
