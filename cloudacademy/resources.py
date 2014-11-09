@@ -93,11 +93,22 @@ class User(BaseResource):
     path = "/users/%(user_id)s/"
     methods = ["get","put","delete"]
         
-class RandomQuiz(BaseResource):
+class Quiz(BaseResource):
     path = "/quiz/%(provider_id)s/"
     methods = ["get"]
     
-class SimpleQuiz(BaseResource):
+class QuizByTag(BaseResource):
+    path = "/quiz/%(provider_id)s/%(tag_id)s/"
+    methods = ["get"]    
+    
+class QuizAnswer(BaseResource):
     path = "/quiz/simple/%(quiz_id)s/"
     methods = ["get","post"]    
     
+class CourseListResource(BaseResource):
+    path = "/courses/"
+    methods = ["get","post"]    
+    
+class CourseResource(BaseResource):
+    path = "/courses/%(course_id)s/"
+    methods = ["get","post"]    
