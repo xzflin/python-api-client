@@ -17,7 +17,7 @@ You can find your API keys at https://cloudacademy.com/settings/#developers
 ```
 >>> tags=ca.tags.get(chars="aws")
 >>> tags
-{u'items': [{u'product': True, u'weight': 1, u'parent': None, ... u'name': u'AWS General'}], u'tot': 2}
+{u'items': [{u'parent': None, ... u'name': u'AWS General'}], u'tot': 2}
 ```
 
 ## Listing courses
@@ -63,7 +63,10 @@ while not exit:
             user_answer = None
             
     if not exit:
-        result = ca.quiz_answer.post(quiz_id=quiz['_id'],action="answer",answer_id=user_answer)
+        result = ca.quiz_answer.post(
+                    quiz_id=quiz['_id'],
+                    action="answer",
+                    answer_id=user_answer)
         print result['msg']
         print
 ```
